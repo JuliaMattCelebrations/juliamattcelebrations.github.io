@@ -36,7 +36,7 @@ My favorite memory together has to be when you came back to Hawaii to spend 2 mo
 
 To me that trip is symbolic of the fact that we could do anything. We were doing this trip in spite of the odds, and we were making the most of life. We tried so many new placs in Oahu, and I made so many new memories. I've been to Oahu so many times, but that trip was so iconic. Just the right combination of fun, exhaustion, and relaxation
 
-![hawaii](DSCF6860.JPG)
+![hawaii](DSCF6860.jpg)
 
 ### The future
 
