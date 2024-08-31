@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/juliamattcelebrations/static/css/main.a81cc162.css",
-    "main.js": "/juliamattcelebrations/static/js/main.d3f8664f.js",
-    "static/js/453.59227361.chunk.js": "/juliamattcelebrations/static/js/453.59227361.chunk.js",
-    "index.html": "/juliamattcelebrations/index.html",
-    "main.a81cc162.css.map": "/juliamattcelebrations/static/css/main.a81cc162.css.map",
-    "main.d3f8664f.js.map": "/juliamattcelebrations/static/js/main.d3f8664f.js.map",
-    "453.59227361.chunk.js.map": "/juliamattcelebrations/static/js/453.59227361.chunk.js.map"
+    "main.css": "/one-yad-1/static/css/main.a81cc162.css",
+    "main.js": "/one-yad-1/static/js/main.2fc6d7b8.js",
+    "static/js/453.59227361.chunk.js": "/one-yad-1/static/js/453.59227361.chunk.js",
+    "index.html": "/one-yad-1/index.html",
+    "main.a81cc162.css.map": "/one-yad-1/static/css/main.a81cc162.css.map",
+    "main.2fc6d7b8.js.map": "/one-yad-1/static/js/main.2fc6d7b8.js.map",
+    "453.59227361.chunk.js.map": "/one-yad-1/static/js/453.59227361.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a81cc162.css",
-    "static/js/main.d3f8664f.js"
+    "static/js/main.2fc6d7b8.js"
   ]
 }
