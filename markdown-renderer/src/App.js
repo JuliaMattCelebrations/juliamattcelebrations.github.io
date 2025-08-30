@@ -1,10 +1,11 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import './App.css';
 import Tools from './Tools';
 import CelebrationBanner from './CelebrationBanner';
+import About from './About';
 import EncryptedMarkdownRenderer from './EncryptedMarkdownRenderer';
 
 function App() {
