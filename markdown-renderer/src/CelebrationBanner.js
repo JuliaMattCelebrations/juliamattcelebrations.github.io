@@ -6,7 +6,6 @@ import {
   Text,
   VStack,
   HStack,
-  useColorModeValue,
   Card,
   CardBody,
   CardHeader,
@@ -14,8 +13,8 @@ import {
   Badge,
   IconButton,
   Tooltip,
-  useColorMode,
 } from '@chakra-ui/react';
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import EncryptedMarkdownRenderer from './EncryptedMarkdownRenderer';
 

@@ -9,11 +9,10 @@ import {
   Card,
   CardBody,
   CardHeader,
-  useColorModeValue,
   Divider,
-  useColorMode,
   Badge,
 } from '@chakra-ui/react';
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 
 const About = () => {
   const { colorMode } = useColorMode();

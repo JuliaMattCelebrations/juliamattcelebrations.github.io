@@ -2,13 +2,10 @@
 import React from 'react';
 import { HashRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import {
-  ChakraProvider,
   Box,
   Flex,
   Text,
   Button,
-  useColorMode,
-  useColorModeValue,
   Container,
   VStack,
   HStack,
@@ -20,53 +17,14 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  extendTheme,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon, HamburgerIcon } from '@chakra-ui/icons';
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 import Tools from './Tools';
 import CelebrationBanner from './CelebrationBanner';
 import About from './About';
 
-// Custom Psyduck-themed theme
-const theme = extendTheme({
-  config: {
-    initialColorMode: 'light',
-    useSystemColorMode: false,
-  },
-  colors: {
-    psyduck: {
-      50: '#fff7ed',
-      100: '#ffedd5',
-      200: '#fed7aa',
-      300: '#fdba74',
-      400: '#fb923c',
-      500: '#f97316', // Main Psyduck orange
-      600: '#ea580c',
-      700: '#c2410c',
-      800: '#9a3412',
-      900: '#7c2d12',
-    },
-    duck: {
-      50: '#f0f9ff',
-      100: '#e0f2fe',
-      200: '#bae6fd',
-      300: '#7dd3fc',
-      400: '#38bdf8',
-      500: '#0ea5e9', // Psyduck blue
-      600: '#0284c7',
-      700: '#0369a1',
-      800: '#075985',
-      900: '#0c4a6e',
-    },
-  },
-  components: {
-    Button: {
-      defaultProps: {
-        colorScheme: 'psyduck',
-      },
-    },
-  },
-});
+
 
 function App() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -76,10 +34,12 @@ function App() {
   const color = useColorModeValue('gray.800', 'white');
   const headerBg = useColorModeValue('rgba(255, 255, 255, 0.95)', 'rgba(26, 32, 44, 0.95)');
 
+  // Debug color mode
+  console.log('Current color mode:', colorMode);
+
   return (
-    <ChakraProvider theme={theme}>
-      <Router>
-        <Box minH="100vh" bg={bg} color={color}>
+    <Router>
+      <Box minH="100vh" bg={bg} color={color}>
           {/* Header */}
           <Box
             as="header"
@@ -165,7 +125,7 @@ function App() {
                   </Link>
                 </HStack>
 
-                {/* Theme Toggle and Mobile Menu */}
+                                                {/* Theme Toggle and Mobile Menu */}
                 <HStack spacing={4}>
                   <IconButton
                     aria-label="Toggle color mode"
@@ -266,7 +226,6 @@ function App() {
           </Box>
         </Box>
       </Router>
-    </ChakraProvider>
   );
 }
 

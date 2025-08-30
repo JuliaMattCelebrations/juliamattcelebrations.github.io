@@ -21,8 +21,8 @@ import {
   Text,
   Box,
   Image,
-  useColorModeValue,
 } from '@chakra-ui/react';
+import { useColorModeValue } from '@chakra-ui/react';
 
 const EncryptedMarkdownRenderer = ({ filePath }) => {
   const [privateKey, setPrivateKey] = useState('');

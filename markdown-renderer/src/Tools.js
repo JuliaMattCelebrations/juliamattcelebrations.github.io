@@ -10,10 +10,9 @@ import {
   Tab,
   TabPanel,
   VStack,
-  useColorModeValue,
-  useColorMode,
   Badge,
 } from '@chakra-ui/react';
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 import MarkdownEncryptRenderer from './MarkdownEncryptRenderer';
 import MarkdownDecryptRenderer from './MarkdownDecryptRenderer';
 
