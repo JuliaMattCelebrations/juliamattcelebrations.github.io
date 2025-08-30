@@ -3,16 +3,38 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import CryptoJS from 'crypto-js';
 import Confetti from 'react-confetti';
-import { Form, Button, Container, Modal } from 'react-bootstrap';
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Container,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  VStack,
+  Text,
+  Box,
+  Image,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
 const EncryptedMarkdownRenderer = ({ filePath }) => {
   const [privateKey, setPrivateKey] = useState('');
   const [encryptedMarkdown, setEncryptedMarkdown] = useState('');
   const [decryptedMarkdown, setDecryptedMarkdown] = useState('');
   const [error, setError] = useState('');
-  const [showModal, setShowModal] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [showButton, setShowButton] = useState(true);
   const [showConfetti, setShowConfetti] = useState(false);
+
+  const bg = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.600');
 
   useEffect(() => {
     // Fetch the encrypted markdown file from the repository
@@ -34,7 +56,7 @@ const EncryptedMarkdownRenderer = ({ filePath }) => {
         throw new Error('Decryption failed');
       }
       setDecryptedMarkdown(decryptedText);
-      setShowModal(false); // Close the modal on successful decryption
+      onClose(); // Close the modal on successful decryption
       setShowButton(false);
       setShowConfetti(true); // Trigger confetti
       setTimeout(() => setShowConfetti(false), 5000); // Stop confetti after 5 seconds
@@ -43,52 +65,87 @@ const EncryptedMarkdownRenderer = ({ filePath }) => {
     }
   };
 
-  const handleShowModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
-
   return (
-    <Container className="full-page-grid">
+    <Container maxW="container.lg" py={8}>
       {showConfetti && <Confetti />}
+
       {showButton && (
-        <Button variant="primary" onClick={handleShowModal}  className="big-center-button">
-          Unlock the secret message
-        </Button>
+        <Box textAlign="center" mb={8}>
+          <Button
+            size="lg"
+            colorScheme="purple"
+            onClick={onOpen}
+            px={8}
+            py={6}
+            fontSize="xl"
+            borderRadius="full"
+            _hover={{ transform: 'scale(1.05)' }}
+            transition="all 0.2s"
+          >
+          🔓 Unlock the secret message
+          </Button>
+        </Box>
       )}
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Enter your answer</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* {encryptedMarkdown} */}
-          <Form>
-            <Form.Group controlId="formPrivateKey">
-              <Form.Label>Private Key</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter the secret password"
-                value={privateKey}
-                onChange={handlePrivateKeyChange}
-              />
-            </Form.Group>
-            <Button variant="primary" onClick={handleDecrypt} style={{marginTop: 5}}>
-              Decrypt
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent bg={bg} border="1px" borderColor={borderColor}>
+          <ModalHeader color="purple.500">🔐 Enter your answer</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <VStack spacing={4}>
+              <FormControl>
+                <FormLabel>Private Key</FormLabel>
+                <Input
+                  type="text"
+                  placeholder="Enter the secret password"
+                  value={privateKey}
+                  onChange={handlePrivateKeyChange}
+                  size="lg"
+                  borderRadius="md"
+                />
+              </FormControl>
+              {error && (
+                <Text color="red.500" fontSize="sm">
+                  {error}
+                </Text>
+              )}
+            </VStack>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="purple" onClick={handleDecrypt} size="lg">
+              🔓 Decrypt
             </Button>
-            {error && <p className="text-danger">{error}</p>}
-        </Form>
-        </Modal.Body>
+          </ModalFooter>
+        </ModalContent>
       </Modal>
 
-        <Container className="blog-post">
-            {decryptedMarkdown && (
-                <img src="/IMG_0007.JPG" className="blog-post-image"/>
-            )}
-            <div>
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {decryptedMarkdown}
-                </ReactMarkdown>
-            </div>
-        </Container>
+      {decryptedMarkdown && (
+        <Box
+          bg={bg}
+          border="1px"
+          borderColor={borderColor}
+          borderRadius="lg"
+          p={6}
+          shadow="lg"
+        >
+          <Box mb={6} textAlign="center">
+            <Image
+              src="/IMG_0007.JPG"
+              alt="Celebration"
+              borderRadius="lg"
+              maxH="400px"
+              mx="auto"
+              shadow="md"
+            />
+          </Box>
+          <Box>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {decryptedMarkdown}
+            </ReactMarkdown>
+          </Box>
+        </Box>
+      )}
     </Container>
   );
 };
