@@ -1,0 +1,287 @@
+/* Beautiful Markdown Renderer - Personal, Rough Around the Edges */
+
+.beautiful-markdown {
+  /* More personal typography - less corporate */
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: #2d3748;
+}
+
+/* Simple, less polished headings */
+.beautiful-markdown h1,
+.beautiful-markdown h2,
+.beautiful-markdown h3,
+.beautiful-markdown h4,
+.beautiful-markdown h5,
+.beautiful-markdown h6 {
+  scroll-behavior: smooth;
+  scroll-margin-top: 100px;
+  font-family: 'Georgia', serif;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 1rem;
+}
+
+.beautiful-markdown h1 {
+  font-size: 2.2rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.beautiful-markdown h2 {
+  font-size: 1.8rem;
+  color: #4a5568;
+}
+
+.beautiful-markdown h3 {
+  font-size: 1.4rem;
+  color: #718096;
+}
+
+/* Simple focus states */
+.beautiful-markdown a:focus,
+.beautiful-markdown button:focus {
+  outline: 2px solid #e53e3e;
+  outline-offset: 2px;
+}
+
+/* Simple selection colors */
+.beautiful-markdown ::selection {
+  background-color: #fed7d7;
+  color: inherit;
+}
+
+.beautiful-markdown ::-moz-selection {
+  background-color: #fed7d7;
+  color: inherit;
+}
+
+/* Simpler code blocks - less corporate */
+.beautiful-markdown pre {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background: #f7fafc;
+}
+
+/* Inline code - more personal */
+.beautiful-markdown code:not(pre code) {
+  font-weight: 500;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  font-family: 'Courier New', monospace;
+}
+
+/* Personal blockquote styling - rough around the edges */
+.beautiful-markdown blockquote {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  background: #fef5e7;
+  border-left: 4px solid #ed8936;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  font-style: italic;
+  color: #744210;
+}
+
+.beautiful-markdown blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -8px;
+  left: 15px;
+  font-size: 3rem;
+  color: #ed8936;
+  font-family: 'Georgia', serif;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+/* Simple list styling */
+.beautiful-markdown ul li::before,
+.beautiful-markdown ol li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #ed8936;
+  border-radius: 50%;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.beautiful-markdown ol li::before {
+  background: #38b2ac;
+}
+
+/* Simple table styling */
+.beautiful-markdown table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.beautiful-markdown th {
+  background: #edf2f7;
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.75rem;
+}
+
+.beautiful-markdown td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0.75rem;
+}
+
+.beautiful-markdown tr:hover td {
+  background-color: #f7fafc;
+}
+
+/* Simple image styling */
+.beautiful-markdown img {
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  max-width: 100%;
+}
+
+.beautiful-markdown img:hover {
+  transform: scale(1.02);
+  border-color: #ed8936;
+}
+
+/* Simple horizontal rule */
+.beautiful-markdown hr {
+  height: 2px;
+  background: #e2e8f0;
+  border: none;
+  border-radius: 1px;
+  margin: 2rem 0;
+}
+
+/* Simple link styling */
+.beautiful-markdown a {
+  color: #3182ce;
+  text-decoration: underline;
+  text-decoration-color: #c6f6d5;
+  text-underline-offset: 2px;
+}
+
+.beautiful-markdown a:hover {
+  color: #2c5aa0;
+  text-decoration-color: #9ae6b4;
+}
+
+/* Dark mode - simpler */
+.beautiful-markdown[data-theme="dark"] {
+  color: #e2e8f0;
+}
+
+.beautiful-markdown[data-theme="dark"] h1,
+.beautiful-markdown[data-theme="dark"] h2,
+.beautiful-markdown[data-theme="dark"] h3 {
+  color: #f7fafc;
+}
+
+.beautiful-markdown[data-theme="dark"] code:not(pre code) {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+.beautiful-markdown[data-theme="dark"] blockquote {
+  background: #2d3748;
+  color: #e2e8f0;
+}
+
+.beautiful-markdown[data-theme="dark"] pre {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+/* Print styles */
+@media print {
+  .beautiful-markdown {
+    color: black !important;
+    background: white !important;
+  }
+
+  .beautiful-markdown h1,
+  .beautiful-markdown h2,
+  .beautiful-markdown h3 {
+    color: black !important;
+  }
+
+  .beautiful-markdown pre {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* Responsive - simpler */
+@media (max-width: 768px) {
+  .beautiful-markdown {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .beautiful-markdown h1 {
+    font-size: 1.8rem;
+  }
+
+  .beautiful-markdown h2 {
+    font-size: 1.5rem;
+  }
+
+  .beautiful-markdown h3 {
+    font-size: 1.3rem;
+  }
+
+  .beautiful-markdown blockquote {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+}
+
+/* Light mode specific styles */
+.beautiful-markdown[data-theme="light"] {
+  color: #2d3748;
+}
+
+.beautiful-markdown[data-theme="light"] h1,
+.beautiful-markdown[data-theme="light"] h2,
+.beautiful-markdown[data-theme="light"] h3 {
+  color: #1a202c;
+}
+
+.beautiful-markdown[data-theme="light"] blockquote {
+  background: #fef5e7;
+  color: #744210;
+  border-left-color: #ed8936;
+}
+
+.beautiful-markdown[data-theme="light"] code:not(pre code) {
+  background: #f7fafc;
+  border-color: #e2e8f0;
+}
+
+/* Simple fade in - less corporate */
+.beautiful-markdown * {
+  animation: simpleFadeIn 0.4s ease-out;
+}
+
+@keyframes simpleFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

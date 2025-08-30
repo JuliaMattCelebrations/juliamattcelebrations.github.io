@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import BeautifulMarkdownRenderer from './BeautifulMarkdownRenderer';
 import CryptoJS from 'crypto-js';
 import Confetti from 'react-confetti';
 import {
@@ -140,9 +139,9 @@ const EncryptedMarkdownRenderer = ({ filePath }) => {
             />
           </Box>
           <Box>
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            <BeautifulMarkdownRenderer>
               {decryptedMarkdown}
-            </ReactMarkdown>
+            </BeautifulMarkdownRenderer>
           </Box>
         </Box>
       )}

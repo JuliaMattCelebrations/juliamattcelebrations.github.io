@@ -23,6 +23,7 @@ import { useColorMode, useColorModeValue } from '@chakra-ui/react';
 import Tools from './Tools';
 import CelebrationBanner from './CelebrationBanner';
 import About from './About';
+import TestBeautifulMarkdown from './TestBeautifulMarkdown';
 
 
 
@@ -36,6 +37,12 @@ function App() {
 
   // Debug color mode
   console.log('Current color mode:', colorMode);
+  console.log('Theme toggle function:', toggleColorMode);
+
+  // Force light mode for testing if needed
+  React.useEffect(() => {
+    console.log('App mounted, color mode:', colorMode);
+  }, [colorMode]);
 
   return (
     <Router>
@@ -121,6 +128,19 @@ function App() {
                       transition="all 0.2s"
                     >
                       ℹ️ About
+                    </Button>
+                  </Link>
+                  <Link to="/test">
+                    <Button
+                      variant="ghost"
+                      color={color}
+                      _hover={{
+                        bg: colorMode === 'light' ? 'psyduck.50' : 'psyduck.800',
+                        transform: 'translateY(-2px)'
+                      }}
+                      transition="all 0.2s"
+                    >
+                      🎨 Test
                     </Button>
                   </Link>
                 </HStack>
@@ -211,6 +231,18 @@ function App() {
                       About
                     </Button>
                   </Link>
+                  <Link to="/test" onClick={onClose}>
+                    <Button
+                      variant="ghost"
+                      w="full"
+                      justifyContent="flex-start"
+                      color={color}
+                      leftIcon={<span>🎨</span>}
+                      _hover={{ bg: colorMode === 'light' ? 'psyduck.50' : 'psyduck.800' }}
+                    >
+                      Test
+                    </Button>
+                  </Link>
                 </VStack>
               </DrawerBody>
             </DrawerContent>
@@ -221,6 +253,7 @@ function App() {
             <Routes>
               <Route path="/tools" element={<Tools />} />
               <Route path="/about" element={<About />} />
+              <Route path="/test" element={<TestBeautifulMarkdown />} />
               <Route path="" element={<CelebrationBanner />} />
             </Routes>
           </Box>

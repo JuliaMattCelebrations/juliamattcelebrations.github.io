@@ -13,8 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { useColorModeValue } from '@chakra-ui/react';
 import CryptoJS from 'crypto-js';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import BeautifulMarkdownRenderer from './BeautifulMarkdownRenderer';
 
 const MarkdownEncryptRenderer = () => {
   const [markdown, setMarkdown] = useState('');
@@ -131,9 +130,9 @@ const MarkdownEncryptRenderer = () => {
             📖 Preview
           </Text>
           <Box className="blog-post">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            <BeautifulMarkdownRenderer>
               {markdown}
-            </ReactMarkdown>
+            </BeautifulMarkdownRenderer>
           </Box>
         </Box>
       )}

@@ -13,8 +13,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import CryptoJS from 'crypto-js';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import BeautifulMarkdownRenderer from './BeautifulMarkdownRenderer';
 
 const MarkdownDecryptRenderer = () => {
   const [encryptedMarkdown, setEncryptedMarkdown] = useState('');
@@ -161,9 +160,9 @@ const MarkdownDecryptRenderer = () => {
                 📖 Rendered Preview
               </Text>
               <Box className="blog-post">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                <BeautifulMarkdownRenderer>
                   {decryptedMarkdown}
-                </ReactMarkdown>
+                </BeautifulMarkdownRenderer>
               </Box>
             </Box>
           </VStack>
